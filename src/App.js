@@ -10,6 +10,7 @@ import {
 import Home from './views/Home'
 import { Login } from './views/Login/Login';
 import Search from "./views/Search";
+import HeroDetail from "./views/HeroDetail";
 
 const useAuth = () => {
   const token = localStorage.getItem('token');
@@ -18,25 +19,25 @@ const useAuth = () => {
 
 export const TeamContext = createContext({});
 function App() {
-  const [team, setTeam] = useState([])
+  const [context, setContext] = useState({ selectedHero: null, team: [] })
   return (
-    <TeamContext.Provider value={{ team: team, setTeam }}>
+    <TeamContext.Provider value={{ context, setContext }} >
       <Router>
         <div>
-          <nav>
-            <ul>
-              <li>
-                <Link to="/">Home</Link>
-              </li>
-              <li>
-                <Link to="/search">Search</Link>
-              </li>
-              <li>
-                <Link to="/users">Users</Link>
-              </li>
-            </ul>
+          <nav className="navbar navbar-expand-lg navbar-light bg-light mb-5">
+            <div className="container-fluid">
+              <a className="navbar-brand" href="/">Heroes</a>
+              <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span className="navbar-toggler-icon"></span>
+              </button>
+              <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div className="navbar-nav">
+                  <a className="nav-link" href="/">Team</a>
+                  <a className="nav-link" href="/search">Search</a>
+                </div>
+              </div>
+            </div>
           </nav>
-
           {/* A <Switch> looks through its children <Route>s and
                 renders the first one that matches the current URL. */}
           <Switch>
@@ -46,13 +47,16 @@ function App() {
             <PrivateRoute path="/search">
               <Search />
             </PrivateRoute>
+            <PrivateRoute path="/hero/:heroId">
+              <HeroDetail />
+            </PrivateRoute>
             <PrivateRoute path="/">
               <Home />
             </PrivateRoute>
           </Switch>
         </div>
       </Router>
-    </TeamContext.Provider>
+    </ TeamContext.Provider>
   );
 }
 
