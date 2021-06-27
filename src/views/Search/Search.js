@@ -26,7 +26,7 @@ function Search() {
     async function getData() {
       if (formik.values.heroName) {
         setRequestState(REQUEST_STATES.LOADING)
-        const { data } = await axios.get(`http://localhost:8000/search?q=${formik.values.heroName}`)
+        const { data } = await axios.get(`https://superheroapi.com/api/10226504347219088/search/${formik.values.heroName}`)
         setData(data)
         setRequestState(REQUEST_STATES.RESOLVED)
       }
