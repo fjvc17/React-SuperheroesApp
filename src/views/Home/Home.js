@@ -1,11 +1,10 @@
 import { useContext, useEffect, useState } from 'react';
 import { useHistory, Link, useRouteMatch, Switch, Route } from 'react-router-dom'
 import { TeamContext } from '../../App';
+import TeamData from './components/TeamData';
 
 function Home() {
-  const match = useRouteMatch();
   const value = useContext(TeamContext)
-  console.log({ value })
   const history = useHistory()
   const handleRemove = (heroId) => {
     const newTeam = value.context.team.filter(h => h.id !== heroId)
@@ -17,6 +16,7 @@ function Home() {
   }
   return (
     <div className="container-fluid">
+      {value.context.team.length ? <TeamData /> : "Go to search to find heroes for your team"}
       <div className="card-group">
         {value.context.team ? value.context.team.map((hero) => (
           <div className="card ms-4 mb-3" style={{ maxWidth: "18rem" }} key={hero.id}>

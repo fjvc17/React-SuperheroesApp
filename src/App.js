@@ -11,6 +11,7 @@ import Home from './views/Home'
 import { Login } from './views/Login/Login';
 import Search from "./views/Search";
 import HeroDetail from "./views/HeroDetail";
+import Navbar from './Components/Navbar'
 
 const useAuth = () => {
   const token = localStorage.getItem('token');
@@ -24,20 +25,7 @@ function App() {
     <TeamContext.Provider value={{ context, setContext }} >
       <Router>
         <div>
-          <nav className="navbar navbar-expand-lg navbar-light bg-light mb-5">
-            <div className="container-fluid">
-              <a className="navbar-brand" href="/">Heroes</a>
-              <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                <span className="navbar-toggler-icon"></span>
-              </button>
-              <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
-                <div className="navbar-nav">
-                  <a className="nav-link" href="/">Team</a>
-                  <a className="nav-link" href="/search">Search</a>
-                </div>
-              </div>
-            </div>
-          </nav>
+          <Navbar />
           {/* A <Switch> looks through its children <Route>s and
                 renders the first one that matches the current URL. */}
           <Switch>

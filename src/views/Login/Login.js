@@ -28,13 +28,12 @@ export const Login = () => {
       })
     }
   });
-  console.log({ error: formik.errors })
   return (
     <>
       <form onSubmit={formik.handleSubmit} className="container mt-5">
-        <input onBlur={formik.handleBlur} className="form-control mb-4" onChange={formik.handleChange} type="email" id="email" name="email" value={formik.values.email} />
+        <input onBlur={formik.handleBlur} placeholder="email" className="form-control mb-4" onChange={formik.handleChange} type="email" id="email" name="email" value={formik.values.email} />
         {formik.errors.email && formik.touched.email ? <div className="invalid-feedback d-block">{formik.errors.email}</div> : null}
-        <input onBlur={formik.handleBlur} className="form-control" onChange={formik.handleChange} type="password" id="password" name="password" value={formik.values.password} />
+        <input placeholder={"password"} onBlur={formik.handleBlur} className="form-control mb-4" onChange={formik.handleChange} type="password" id="password" name="password" value={formik.values.password} />
         <button className="btn btn-primary">Login</button>
       </form>
     </>

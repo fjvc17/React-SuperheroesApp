@@ -41,7 +41,7 @@ function Search() {
       </div>
       <div className="row ms-4">
         {requestState === REQUEST_STATES.RESOLVED ? data.results ? data.results.map((hero) => (
-          <HeroCard key={hero.id} powerStats={hero.powerstats} showStats onClick={() => value.setContext({ ...value.context, team: value.context.team.concat(hero) })} heroName={hero.name} avatar={hero.image.url} />
+          <HeroCard buttonDisabled={value.context.team.length === 6} key={hero.id} powerStats={hero.powerstats} showStats onClick={() => value.setContext({ ...value.context, team: value.context.team.concat(hero) })} heroName={hero.name} avatar={hero.image.url} />
         )) : <div>No hero found</div> : null}
       </div>
     </div>
