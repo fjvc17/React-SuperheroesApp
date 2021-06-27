@@ -17,6 +17,7 @@
     "react-scripts": "4.0.3",
     "web-vitals": "^1.1.2"
   },
+  "proxy": "https://superheroapi/api/10226504347219088/",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",

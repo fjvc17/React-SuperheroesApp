@@ -5,7 +5,9 @@ const app = express();
 var cors = require('cors')
 const port = 8000;
 
-app.use(cors({ origin: false }))
+app.use(cors({
+    origin: "*"
+}))
 app.get('/search', async (req, res) => {
     const searchString = req.query.q
     const response = await fetch(`https://superheroapi.com/api/10226504347219088/search/${searchString}`)
